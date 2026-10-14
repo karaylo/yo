@@ -22,14 +22,18 @@
     }
 
     body {
-      background-color: var(--bg0);
-      color: var(--fg1);
-      font-family: 'JetBrains Mono', monospace, Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
+      background-image: url('nut.png'); /* Вкажіть шлях до вашої картинки */
+  background-size: cover;            /* Розтягує фото на весь екран */
+  background-position: center;       /* Центрує зображення */
+  background-repeat: no-repeat;      /* Забороняє повторення картинки */
+  background-attachment: fixed;      /* Фіксує фон при прокрутці */
+  color: var(--fg1);
+  font-family: 'JetBrains Mono', monospace, Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
     }
 
     .container {
