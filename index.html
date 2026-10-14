@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>З Днем Народження!</title>
+  <style>
+    /* Gruvbox Dark Palette */
+    :root {
+      --bg0: #282828;
+      --bg1: #3c3836;
+      --bg2: #504945;
+      --fg0: #fbf1c7;
+      --fg1: #ebdbb2;
+      --gray: #928374;
+      --red: #fb4934;
+      --green: #b8bb26;
+      --yellow: #fabd2f;
+      --blue: #83a598;
+      --purple: #d3869b;
+      --aqua: #8ec07c;
+      --orange: #fe8019;
+    }
+
+    body {
+      background-color: var(--bg0);
+      color: var(--fg1);
+      font-family: 'JetBrains Mono', monospace, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    header {
+      background-color: var(--bg1);
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--bg2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    header h1 {
+      color: var(--yellow);
+      margin-bottom: 10px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background-color: var(--bg1);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--bg2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      color: var(--green);
+      border-bottom: 1px solid var(--bg2);
+      padding-bottom: 10px;
+      margin: 0;
+    }
+
+    .quote-box {
+      background-color: var(--bg0);
+      padding: 15px;
+      border-left: 4px solid var(--aqua);
+      border-radius: 4px;
+      font-style: italic;
+      color: var(--fg0);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      line-height: 1.4;
+    }
+
+    button {
+      background-color: var(--blue);
+      color: var(--bg0);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: filter 0.2s;
+    }
+
+    button:hover {
+      filter: brightness(1.15);
+    }
+
+    .btn-danger {
+      background-color: var(--red);
+      color: var(--bg0);
+    }
+
+    .arch-area {
+      position: relative;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg0);
+      border-radius: 6px;
+      border: 1px dashed var(--bg2);
+      overflow: hidden;
+    }
+
+    #arch-btn {
+      position: absolute;
+      transition: all 0.1s ease-out;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>З Днем Народження! 🎉</h1>
+      <p>Щастя, здоров'я, смикання.</p>
+    </header>
+
+    <div class="grid">
+
+      <!-- Сергій Регета Card -->
+      <div class="card">
+        <h2>⚡ Сергій Регета</h2>
+        <div class="quote-box" id="regetaQuote">«Грай футбол!»</div>
+        <button onclick="generateRegeta()">тиць</button>
+      </div>
+
+      <!-- Костянтин Коцюруб Card -->
+      <div class="card">
+        <h2>📜 Костянтин Коцюруб</h2>
+        <div class="quote-box" id="kotsyurubQuote">«Грузи когута!»</div>
+        <button onclick="generateKotsyurub()">Мудрість Коцюруба</button>
+      </div>
+
+      <!-- Подарунок / Arch Linux Card -->
+      <div class="card full-width">
+        <h2 style="text-align: center; color: var(--orange);">🎁 Святковий Подарунок</h2>
+        <div class="arch-area" id="archArea">
+          <button class="btn-danger" id="arch-btn" onmouseenter="moveBtn()" onclick="installArch()">Скачати Arch Linux</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const regetaQuotes = [
+      "«Грай футбол!»",
+      "Я ті ноги обріжу",
+      "2 дні сіно кос та дайте відихнути",
+      "Фу пивом смаржу",
+      "Курва иать горб поготь разом макітрою",
+      "Ну нахуя ті виїбони?",
+    ];
+
+    const kotsyurubQuotes = [
+      "«Грузи когута!»",
+    ];
+
+    function generateRegeta() {
+      const idx = Math.floor(Math.random() * regetaQuotes.length);
+      document.getElementById('regetaQuote').innerText = regetaQuotes[idx];
+    }
+
+    function generateKotsyurub() {
+      const idx = Math.floor(Math.random() * kotsyurubQuotes.length);
+      document.getElementById('kotsyurubQuote').innerText = kotsyurubQuotes[idx];
+    }
+
+    function moveBtn() {
+      const btn = document.getElementById('arch-btn');
+      const area = document.getElementById('archArea');
+      
+      const areaRect = area.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+
+      let newX = Math.random() * (areaRect.width - btnRect.width - 20);
+      let newY = Math.random() * (areaRect.height - btnRect.height - 10);
+
+      btn.style.left = newX + 'px';
+      btn.style.top = newY + 'px';
+    }
+
+    function installArch() {
+      alert("Я не знаю як ту кнопку нормально зробити :(");
+    }
+  </script>
+</body>
+</html>
